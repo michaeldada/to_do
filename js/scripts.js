@@ -27,8 +27,15 @@ $(document).ready(function() {
     var newList = new ToDo()
     newList.addItem(listInput);
 
-    $('ol#toDoList').append('<li>' + listInput + '</li>')
+    $('ol#toDoList').append('<li class="listItems">' + listInput + '</li>');
 
+    $('li.listItems').last().click(function() {
+      var completedItem = $(this).text();
+      $('ol#completedList').append('<li class="doneItems">' + completedItem + '</li>');
+      $('li.listItems').last().remove();
+
+    });
+    $('input#input').val("");
   });
 
 });
