@@ -1,5 +1,6 @@
-function ToDo(list) {
+function ToDo() {
   this.list = [];
+  this.done = [];
 }
 
 ToDo.prototype.addItem = function() {
@@ -8,3 +9,26 @@ ToDo.prototype.addItem = function() {
   }
   return this.list;
 }
+
+ToDo.prototype.doneItems = function(index) {
+  this.done = this.list.slice(index, index+1);
+  var beforeCut = this.list.slice(0,index);
+  var afterCut = this.list.slice(index+1, this.list.length);
+  this.list = beforeCut.concat(afterCut);
+
+  return this.list && this.done;
+}
+
+$(document).ready(function() {
+  $('form#toDoForm').submit(function(event) {
+    event.preventDefault();
+
+    var listInput = $('#input').val();
+    var newList = new ToDo()
+    newList.addItem(listInput);
+
+    $('ol#toDoList').append('<li>' + listInput + '</li>')
+
+  });
+
+});
