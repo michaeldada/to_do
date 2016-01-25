@@ -12,8 +12,8 @@ describe('ToDo', function() {
     var testToDo = new ToDo();
     expect(testToDo.addItem("shower")).to.eql(['shower']);
   });
-  // it('should display multiple list items in the list when added', function() {
-  //   var testToDo = new ToDo();
-  //   expect(testToDo.addItem("shower", "clean", "eat")).to.eql(['shower', 'clean', 'eat']);
-  // });
+  it('should display multiple list items in the list when added', function() {
+    var testToDo = new ToDo();
+    expect(testToDo.addItem("shower", "clean", "eat")).to.eql(['shower', 'clean', 'eat']);
+  });
 });
